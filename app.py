@@ -1,4 +1,4 @@
-import random
+import secrets
 from flask import Flask, jsonify, render_template
 
 app = Flask(__name__)
@@ -34,9 +34,9 @@ def index():
 
 @app.route("/shake")
 def shake():
-    answer, response_type = random.choice(RESPONSES)
+    answer, response_type = secrets.choice(RESPONSES)
     return jsonify({"answer": answer, "type": response_type})
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
